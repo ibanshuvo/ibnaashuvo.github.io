@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title> My Portfolio </title>
+   My Portfolio 
 </head>
 <body>
   <h1>Hello, I'm Shuvo</h1>
