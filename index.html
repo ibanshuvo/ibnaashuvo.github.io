@@ -3,1164 +3,462 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shuvo | Graphics Designer & Visual Storyteller</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<title>Shuvo — Creative Designer & Email Marketing Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #080808;
-    --surface: #111111;
-    --card: #161616;
-    --border: #222222;
-    --accent1: #FF3D00;
-    --accent2: #FFD600;
-    --accent3: #00E5FF;
-    --text: #F0F0F0;
-    --muted: #666666;
-    --white: #ffffff;
-  }
+:root {
+  --bg: #06060A;
+  --surface: #0D0D14;
+  --card: #12121C;
+  --border: #1E1E2E;
+  --border2: #2A2A3E;
+  --accent: #7B61FF;
+  --accent2: #FF6B6B;
+  --accent3: #00D4AA;
+  --yellow: #FFD166;
+  --text: #E8E8F0;
+  --muted: #5A5A78;
+  --muted2: #8888AA;
+  --white: #FFFFFF;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+#cur-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cur-ring{width:32px;height:32px;border:1px solid var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s,opacity .25s;opacity:0.5;}
+body.hovering #cur-ring{width:52px;height:52px;border-color:var(--accent2);opacity:1;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:9996;}
 
-  html { scroll-behavior: smooth; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5rem;background:rgba(6,6,10,0.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white);}
+.nav-logo em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted2);text-decoration:none;letter-spacing:0.5px;transition:color .3s;}
+.nav-links a:hover{color:var(--white);}
+.nav-hire{background:var(--accent) !important;color:var(--white) !important;padding:0.5rem 1.3rem !important;border-radius:6px !important;}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:9rem 5rem 5rem;position:relative;overflow:hidden;}
+.hero-mesh{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 70% at 75% 40%,rgba(123,97,255,0.12),transparent 60%),radial-gradient(ellipse 40% 50% at 20% 70%,rgba(0,212,170,0.07),transparent 60%),radial-gradient(ellipse 30% 40% at 60% 80%,rgba(255,107,107,0.06),transparent 60%);}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 70% 40%,black,transparent);opacity:0.4;}
+.hero-shape{position:absolute;border-radius:50%;filter:blur(60px);animation:shapeFloat 10s ease-in-out infinite;}
+.hs1{width:400px;height:400px;background:rgba(123,97,255,0.1);right:-80px;top:80px;}
+.hs2{width:250px;height:250px;background:rgba(0,212,170,0.08);left:5%;bottom:15%;animation-delay:-4s;}
+.hs3{width:180px;height:180px;background:rgba(255,107,107,0.07);right:25%;top:60%;animation-delay:-7s;}
+@keyframes shapeFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-25px) rotate(5deg);}}
 
-  /* CUSTOM CURSOR */
-  .cursor-dot {
-    width: 8px; height: 8px;
-    background: var(--accent1);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease, background 0.2s;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--accent2);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
-  }
-  body:has(a:hover) .cursor-ring,
-  body:has(button:hover) .cursor-ring {
-    width: 56px; height: 56px;
-    border-color: var(--accent1);
-  }
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(123,97,255,0.1);border:1px solid rgba(123,97,255,0.25);border-radius:100px;padding:0.4rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:1px;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .1s forwards;}
+.hero-tag-dot{width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,5.5vw,5.2rem);line-height:1.0;letter-spacing:-2px;color:var(--white);opacity:0;animation:fadeUp .7s .25s forwards;}
+.hero-h1 .line2{display:block;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-h1 .line3{display:block;-webkit-text-stroke:1px rgba(255,255,255,0.2);color:transparent;}
+.hero-sub{font-size:1.05rem;color:var(--muted2);line-height:1.75;margin-top:1.8rem;max-width:480px;opacity:0;animation:fadeUp .7s .4s forwards;}
+.hero-dual{display:flex;gap:1rem;margin-top:2rem;opacity:0;animation:fadeUp .7s .55s forwards;flex-wrap:wrap;}
+.dual-pill{display:flex;align-items:center;gap:0.6rem;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:0.6rem 1.1rem;font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--muted2);}
+.dual-pill strong{color:var(--white);font-weight:500;display:block;font-size:0.68rem;margin-bottom:1px;}
+.hero-btns{display:flex;gap:1rem;margin-top:2.5rem;opacity:0;animation:fadeUp .7s .7s forwards;}
+.btn-grad{background:linear-gradient(135deg,var(--accent),#9b85ff);color:var(--white);padding:0.9rem 2.2rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.5px;text-decoration:none;border:none;cursor:pointer;transition:all .3s;display:inline-block;box-shadow:0 8px 30px rgba(123,97,255,0.3);}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(123,97,255,0.45);}
+.btn-ghost{background:transparent;color:var(--text);padding:0.9rem 2.2rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.5px;text-decoration:none;border:1px solid var(--border2);cursor:pointer;transition:all .3s;display:inline-block;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
 
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none; z-index: 9997;
-  }
+.hero-right{display:flex;flex-direction:column;gap:1.2rem;opacity:0;animation:fadeRight .8s .5s forwards;}
+@keyframes fadeRight{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:translateX(0);}}
+.role-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.8rem 2rem;position:relative;overflow:hidden;transition:all .4s;}
+.role-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(123,97,255,0.05),transparent);opacity:0;transition:opacity .4s;}
+.role-card:hover::before{opacity:1;}
+.role-card:hover{border-color:rgba(123,97,255,0.3);transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+.rc-email::before{background:linear-gradient(135deg,rgba(0,212,170,0.08),transparent);}
+.rc-email:hover{border-color:rgba(0,212,170,0.3);}
+.role-card-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.role-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.ri-design{background:rgba(123,97,255,0.15);}
+.ri-email{background:rgba(0,212,170,0.12);}
+.role-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);}
+.role-sub{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--muted2);margin-top:2px;}
+.role-tools{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.rtool{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:0.25rem 0.7rem;border-radius:100px;border:1px solid var(--border2);color:var(--muted2);transition:all .3s;}
+.role-card:hover .rtool{border-color:rgba(123,97,255,0.3);color:var(--accent);}
+.rc-email:hover .rtool{border-color:rgba(0,212,170,0.3);color:var(--accent3);}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.5rem 4rem;
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    background: rgba(8,8,8,0.7);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: var(--white);
-    letter-spacing: 2px;
-  }
-  .nav-logo span { color: var(--accent1); }
-  .nav-links { display: flex; gap: 2.5rem; }
-  .nav-links a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--accent1);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    background: var(--accent1);
-    color: var(--white) !important;
-    padding: 0.6rem 1.5rem !important;
-    border-radius: 2px;
-  }
-  .nav-cta::after { display: none !important; }
-  .nav-cta:hover { background: #e63600 !important; }
+/* TICKER */
+.ticker{background:linear-gradient(90deg,var(--accent),#9b85ff,var(--accent3),var(--accent2),var(--accent));background-size:300% 100%;animation:gradShift 6s linear infinite;overflow:hidden;}
+@keyframes gradShift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.ticker-track{display:flex;animation:ticker 25s linear infinite;white-space:nowrap;padding:0.9rem 0;}
+.ticker-item{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:2px;color:rgba(255,255,255,0.9);padding:0 2rem;text-transform:uppercase;display:flex;align-items:center;gap:2rem;}
+.ticker-sep{opacity:0.4;font-size:0.5rem;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat-box{padding:2.5rem 2rem;border-right:1px solid var(--border);text-align:center;transition:background .3s;cursor:default;}
+.stat-box:last-child{border-right:none;}
+.stat-box:hover{background:rgba(123,97,255,0.04);}
+.stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:var(--white);line-height:1;}
+.stat-n span{color:var(--accent);}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:0.5rem;}
 
-  .hero-bg-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,61,0,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,61,0,0.05) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-  }
+/* SECTIONS */
+section{padding:7rem 5rem;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;}
+.sec-label::before{content:'';width:30px;height:1px;background:var(--accent);}
+.sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.5rem,4.5vw,4rem);line-height:1.05;color:var(--white);letter-spacing:-1.5px;}
+.sec-title .ghost{-webkit-text-stroke:1px rgba(255,255,255,0.12);color:transparent;}
+.sec-title .grad{background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-  .hero-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    animation: orbFloat 8s ease-in-out infinite;
-  }
-  .orb1 { width: 500px; height: 500px; background: rgba(255,61,0,0.15); right: -100px; top: 50px; animation-delay: 0s; }
-  .orb2 { width: 300px; height: 300px; background: rgba(255,214,0,0.1); right: 300px; bottom: 100px; animation-delay: -3s; }
-  .orb3 { width: 250px; height: 250px; background: rgba(0,229,255,0.08); left: 100px; top: 200px; animation-delay: -5s; }
+/* ABOUT */
+#about{background:var(--surface);border-top:1px solid var(--border);}
+.about-wrap{display:grid;grid-template-columns:0.9fr 1fr;gap:5rem;align-items:center;}
+.about-frame{width:100%;aspect-ratio:4/5;background:var(--card);border:1px solid var(--border2);border-radius:20px;overflow:hidden;position:relative;}
+.about-frame-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:9rem;color:rgba(255,255,255,0.04);background:linear-gradient(145deg,var(--card),rgba(123,97,255,0.08));}
+.about-frame img{width:100%;height:100%;object-fit:cover;}
+.about-photo-wrap{position:relative;}
+.about-exp-badge{position:absolute;bottom:-16px;right:-16px;background:linear-gradient(135deg,var(--accent),#9b85ff);border-radius:14px;padding:1.3rem 1.6rem;box-shadow:0 12px 40px rgba(123,97,255,0.4);}
+.aeb-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--white);line-height:1;}
+.aeb-text{font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
+.about-avail{position:absolute;top:-14px;left:20px;background:var(--card);border:1px solid rgba(0,212,170,0.3);border-radius:100px;padding:0.4rem 1rem;display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--accent3);}
+.avail-dot{width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite;}
+.about-content p{font-size:1rem;color:var(--muted2);line-height:1.85;margin-bottom:1.4rem;}
+.about-content p strong{color:var(--text);font-weight:500;}
+.about-content p em{color:var(--yellow);font-style:normal;}
+.spec-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.spec-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:1.4rem;transition:all .3s;}
+.spec-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.spec-card-em:hover{border-color:var(--accent3);}
+.spec-icon{font-size:1.5rem;margin-bottom:0.8rem;}
+.spec-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.4rem;}
+.spec-desc{font-size:0.8rem;color:var(--muted);line-height:1.5;}
+.skills-wrap{margin-top:2rem;display:flex;flex-direction:column;gap:0.8rem;}
+.skill-head{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted2);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.5px;}
+.skill-head span{color:var(--accent);}
+.skill-track{height:2px;background:var(--border2);border-radius:2px;overflow:hidden;}
+.skill-bar{height:100%;width:0;border-radius:2px;transition:width 1.5s cubic-bezier(.4,0,.2,1);}
+.sb-design{background:linear-gradient(90deg,var(--accent),#b8a5ff);}
+.sb-email{background:linear-gradient(90deg,var(--accent3),#66ffdd);}
 
-  @keyframes orbFloat {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
-  }
+/* SERVICES */
+#services{background:var(--bg);}
+.services-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;}
+.services-intro p{font-size:1rem;color:var(--muted2);max-width:380px;line-height:1.7;}
+.services-double{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.service-col-head{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;border-radius:10px 10px 0 0;margin-bottom:2px;}
+.sch-design{background:rgba(123,97,255,0.1);border:1px solid rgba(123,97,255,0.2);}
+.sch-email{background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);}
+.sch-icon{font-size:1.5rem;}
+.sch-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);}
+.sch-sub{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--muted2);letter-spacing:1px;text-transform:uppercase;}
+.service-cards-list{display:flex;flex-direction:column;gap:2px;}
+.svc-card{background:var(--card);border:1px solid var(--border);padding:1.6rem 2rem;transition:all .35s;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .35s;}
+.svc-email .svc-card::after{background:var(--accent3);}
+.svc-card:hover::after{transform:scaleY(1);}
+.svc-card:hover{background:rgba(123,97,255,0.04);padding-left:2.4rem;}
+.svc-email .svc-card:hover{background:rgba(0,212,170,0.04);}
+.svc-num{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--muted);letter-spacing:1px;margin-bottom:0.5rem;}
+.svc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.5rem;}
+.svc-desc{font-size:0.82rem;color:var(--muted2);line-height:1.6;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
+.svc-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.5px;color:var(--accent);opacity:0.7;}
+.svc-tag::before{content:'# ';}
+.svc-email .svc-tag{color:var(--accent3);}
 
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+/* PORTFOLIO */
+#portfolio{background:var(--surface);border-top:1px solid var(--border);}
+.port-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;}
+.port-filters{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.pf-btn{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;padding:0.5rem 1.2rem;border:1px solid var(--border2);border-radius:100px;background:transparent;color:var(--muted2);cursor:pointer;transition:all .3s;}
+.pf-btn.active,.pf-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(123,97,255,0.08);}
+.port-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:110px;gap:10px;}
+.pi{position:relative;overflow:hidden;border-radius:10px;cursor:pointer;background:var(--card);border:1px solid var(--border);}
+.pi-1{grid-column:span 5;grid-row:span 3;}
+.pi-2{grid-column:span 7;grid-row:span 2;}
+.pi-3{grid-column:span 3;grid-row:span 2;}
+.pi-4{grid-column:span 4;grid-row:span 3;}
+.pi-5{grid-column:span 5;grid-row:span 2;}
+.pi-6{grid-column:span 4;grid-row:span 2;}
+.pi-7{grid-column:span 8;grid-row:span 2;}
+.pi-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.pi:hover .pi-bg{transform:scale(1.1);}
+/* Replace .pi-bg with <img> tag for real images */
+.pi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,10,0.92),rgba(6,6,10,0.1) 55%,transparent);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem;border-radius:10px;}
+.pi:hover .pi-ov{opacity:1;}
+.pi-cat{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem;}
+.pi-cat.em{color:var(--accent3);}
+.pi-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--white);}
+.pi-badge{position:absolute;top:0.8rem;left:0.8rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:0.2rem 0.7rem;border-radius:100px;letter-spacing:1px;}
+.pib-design{background:rgba(123,97,255,0.8);color:#fff;}
+.pib-email{background:rgba(0,212,170,0.8);color:#06060A;}
+.pg1{background:linear-gradient(135deg,#0d0820,#1a1040,#7B61FF 250%);}
+.pg2{background:linear-gradient(135deg,#051a14,#0a3328,#00D4AA 250%);}
+.pg3{background:linear-gradient(135deg,#1a0d0d,#330a0a,#FF6B6B 250%);}
+.pg4{background:linear-gradient(135deg,#14100a,#2e2210,#FFD166 250%);}
+.pg5{background:linear-gradient(135deg,#0a0f1a,#101e38,#4A90E2 250%);}
+.pg6{background:linear-gradient(135deg,#140d1a,#2a1040,#C77DFF 250%);}
+.pg7{background:linear-gradient(135deg,#0d1a0a,#1a3814,#39D353 250%);}
 
-  .hero-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 4px;
-    color: var(--accent1);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--accent1);
-  }
+/* EMAIL MARKETING */
+#email-mkt{background:var(--bg);}
+.email-banner{background:linear-gradient(135deg,rgba(0,212,170,0.08),rgba(123,97,255,0.06));border:1px solid rgba(0,212,170,0.15);border-radius:20px;padding:3rem 3.5rem;margin-bottom:3.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;position:relative;overflow:hidden;}
+.email-banner::before{content:'';position:absolute;right:-50px;top:-50px;width:250px;height:250px;background:radial-gradient(circle,rgba(0,212,170,0.1),transparent 70%);border-radius:50%;}
+.eb-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:3px;color:var(--accent3);text-transform:uppercase;margin-bottom:0.8rem;}
+.eb-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.9rem;color:var(--white);letter-spacing:-0.5px;margin-bottom:0.8rem;}
+.eb-desc{font-size:0.95rem;color:var(--muted2);line-height:1.7;max-width:500px;}
+.eb-metrics{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1;}
+.eb-metric{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:1.2rem 1.8rem;text-align:center;min-width:150px;}
+.eb-mn{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent3);line-height:1;}
+.eb-ml{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.em-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.em-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all .4s;position:relative;overflow:hidden;}
+.em-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,170,0.05),transparent);opacity:0;transition:opacity .4s;}
+.em-card:hover::before{opacity:1;}
+.em-card:hover{border-color:rgba(0,212,170,0.25);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,212,170,0.08);}
+.em-icon{width:48px;height:48px;background:rgba(0,212,170,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.3rem;}
+.em-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.6rem;}
+.em-desc{font-size:0.83rem;color:var(--muted2);line-height:1.65;}
+.em-tools{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
+.em-tool{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.5px;padding:0.2rem 0.7rem;border-radius:100px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);color:var(--accent3);}
 
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 12vw, 11rem);
-    line-height: 0.9;
-    letter-spacing: -2px;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-name .outline {
-    -webkit-text-stroke: 1px rgba(255,255,255,0.2);
-    color: transparent;
-  }
-  .hero-name .accent { color: var(--accent1); }
+/* COMPANIES */
+#companies{background:var(--surface);border-top:1px solid var(--border);}
+.co-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem;}
+.co-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:all .35s;position:relative;overflow:hidden;}
+.co-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent3));transform:scaleX(0);transition:transform .35s;}
+.co-card:hover::after{transform:scaleX(1);}
+.co-card:hover{border-color:rgba(123,97,255,0.25);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,0.3);}
+.co-avatar{width:60px;height:60px;border-radius:14px;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.2rem;transition:border-color .3s;}
+.co-card:hover .co-avatar{border-color:var(--accent);}
+.co-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.3rem;}
+.co-role{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.5rem;}
+.co-period{font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;}
+.co-desc{font-size:0.78rem;color:var(--muted2);line-height:1.6;}
 
-  .hero-title {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin-top: 2rem;
-    line-height: 1.6;
-    max-width: 500px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
+/* TESTIMONIALS */
+#testimonials{background:var(--bg);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem;}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .4s;position:relative;}
+.testi-card:hover{border-color:rgba(123,97,255,0.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.testi-card-em:hover{border-color:rgba(0,212,170,0.25);}
+.tq{font-family:'Syne',sans-serif;font-size:3.5rem;color:rgba(123,97,255,0.12);line-height:1;margin-bottom:0.5rem;}
+.testi-card-em .tq{color:rgba(0,212,170,0.1);}
+.stars{display:flex;gap:3px;margin-bottom:1rem;}
+.star{color:var(--yellow);font-size:0.85rem;}
+.testi-text{font-size:0.88rem;color:var(--muted2);line-height:1.8;margin-bottom:1.5rem;}
+.testi-author{display:flex;align-items:center;gap:0.9rem;border-top:1px solid var(--border);padding-top:1.2rem;}
+.ta-av{width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ta-name{font-weight:500;font-size:0.88rem;color:var(--white);}
+.ta-co{font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.testi-card-em .ta-co{color:var(--accent3);}
+.testi-badge{position:absolute;top:1rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:0.5rem;padding:0.2rem 0.6rem;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+.tb-d{background:rgba(123,97,255,0.15);color:var(--accent);}
+.tb-e{background:rgba(0,212,170,0.12);color:var(--accent3);}
 
-  .hero-tools {
-    display: flex; flex-wrap: wrap; gap: 0.8rem;
-    margin-top: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .tool-badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    padding: 0.4rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    transition: all 0.3s;
-  }
-  .tool-badge:hover {
-    border-color: var(--accent2);
-    color: var(--accent2);
-  }
+/* PROCESS */
+#process{background:var(--surface);border-top:1px solid var(--border);}
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:4rem;}
+.pc-step{text-align:center;padding:2rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;transition:all .4s;position:relative;}
+.pc-step:hover{border-color:rgba(123,97,255,0.3);transform:translateY(-4px);}
+.pc-step::after{content:'→';position:absolute;right:-1.2rem;top:50%;transform:translateY(-50%);color:var(--border2);font-size:1.2rem;z-index:1;}
+.pc-step:last-child::after{display:none;}
+.pc-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;color:rgba(123,97,255,0.15);line-height:1;margin-bottom:0.5rem;}
+.pc-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.pc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.5rem;}
+.pc-desc{font-size:0.75rem;color:var(--muted);line-height:1.55;}
 
-  .hero-cta {
-    display: flex; gap: 1rem; margin-top: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
-  }
-  .btn-primary {
-    background: var(--accent1);
-    color: var(--white);
-    padding: 1rem 2.5rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-    transition: all 0.3s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #e63600; transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    padding: 1rem 2.5rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--accent3); color: var(--accent3); }
+/* CONTACT */
+#contact{background:var(--bg);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;}
+.contact-left p{font-size:1rem;color:var(--muted2);line-height:1.75;margin-top:1.5rem;margin-bottom:2.5rem;}
+.ci-item{display:flex;align-items:center;gap:1.2rem;padding:1.3rem 0;border-bottom:1px solid var(--border);}
+.ci-icon{width:44px;height:44px;background:var(--card);border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:all .3s;}
+.ci-item:hover .ci-icon{border-color:var(--accent);background:rgba(123,97,255,0.08);}
+.ci-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
+.ci-val{font-size:0.95rem;color:var(--text);font-weight:500;}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.cf-group{display:flex;flex-direction:column;gap:0.5rem;}
+.cf-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+.cf-input,.cf-select,.cf-textarea{background:var(--card);border:1px solid var(--border2);border-radius:8px;color:var(--text);padding:0.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.93rem;outline:none;transition:all .3s;appearance:none;}
+.cf-input:focus,.cf-select:focus,.cf-textarea:focus{border-color:var(--accent);background:rgba(123,97,255,0.04);box-shadow:0 0 0 3px rgba(123,97,255,0.1);}
+.cf-textarea{resize:none;min-height:130px;}
+.cf-submit{background:linear-gradient(135deg,var(--accent),#9b85ff);color:var(--white);border:none;cursor:pointer;padding:1rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;box-shadow:0 8px 30px rgba(123,97,255,0.25);}
+.cf-submit:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(123,97,255,0.4);}
 
-  .hero-scroll {
-    position: absolute; bottom: 3rem; left: 4rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-    display: flex; align-items: center; gap: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 1.2s forwards;
-  }
-  .scroll-line {
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, var(--accent1), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between;}
+.f-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--white);}
+.f-logo em{color:var(--accent);font-style:normal;}
+.f-links{display:flex;gap:2rem;}
+.f-links a{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--muted2);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
+.f-links a:hover{color:var(--accent);}
+.f-copy{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--muted);}
 
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    overflow: hidden;
-  }
-  .stat-item {
-    flex: 1;
-    padding: 2.5rem 3rem;
-    border-right: 1px solid var(--border);
-    text-align: center;
-    position: relative;
-    transition: background 0.3s;
-    cursor: default;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-item:hover { background: rgba(255,61,0,0.05); }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    color: var(--white);
-    line-height: 1;
-    display: block;
-  }
-  .stat-num span { color: var(--accent1); }
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-    font-family: 'Space Mono', monospace;
-  }
+/* SIDEBAR */
+.side-bar{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0.8rem;z-index:50;}
+.side-link{width:36px;height:36px;background:var(--card);border:1px solid var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted2);font-size:0.85rem;transition:all .3s;}
+.side-link:hover{border-color:var(--accent);color:var(--accent);transform:translateX(-3px);}
+.side-bar::before,.side-bar::after{content:'';width:1px;height:45px;background:linear-gradient(to bottom,transparent,var(--border2));}
 
-  /* SECTIONS */
-  section { padding: 8rem 4rem; }
-  .section-header {
-    display: flex; align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 5rem;
-  }
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 4px;
-    color: var(--accent1);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-label::before {
-    content: '//';
-    color: var(--accent2);
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    line-height: 0.95;
-    color: var(--white);
-  }
-  .section-title .muted {
-    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
-    color: transparent;
-  }
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.08s;}.rd2{transition-delay:.16s;}.rd3{transition-delay:.24s;}.rd4{transition-delay:.32s;}.rd5{transition-delay:.40s;}
 
-  /* ABOUT */
-  #about { background: var(--surface); border-top: 1px solid var(--border); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .about-visual {
-    position: relative;
-    aspect-ratio: 3/4;
-    max-height: 550px;
-  }
-  .about-photo-frame {
-    width: 100%; height: 100%;
-    background: var(--card);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
-  }
-  .about-photo-frame::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,61,0,0.2), rgba(0,229,255,0.1));
-  }
-  .about-photo-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 8rem;
-    color: rgba(255,255,255,0.05);
-    letter-spacing: -5px;
-  }
-  .about-corner-tag {
-    position: absolute; top: -1px; right: -1px;
-    width: 30px; height: 30px;
-    border-left: 30px solid transparent;
-    border-top: 30px solid var(--accent1);
-  }
-  .about-badge {
-    position: absolute; bottom: -20px; right: -20px;
-    background: var(--accent1);
-    padding: 1.5rem;
-    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
-  }
-  .about-badge-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: var(--white);
-    line-height: 1;
-  }
-  .about-badge-text {
-    font-size: 0.65rem;
-    font-family: 'Space Mono', monospace;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .about-text p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-  .about-text p strong { color: var(--text); font-weight: 600; }
-  .about-text p em { color: var(--accent2); font-style: normal; }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2.5rem;
-  }
-  .skill-row {
-    display: flex; flex-direction: column; gap: 0.4rem;
-  }
-  .skill-name {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: flex; justify-content: space-between;
-  }
-  .skill-name span { color: var(--muted); }
-  .skill-bar {
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent1), var(--accent2));
-    border-radius: 2px;
-    width: 0;
-    transition: width 1.5s ease;
-  }
-
-  /* SERVICES */
-  #services { background: var(--bg); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .service-card {
-    background: var(--surface);
-    padding: 3rem 2.5rem;
-    position: relative;
-    transition: background 0.4s;
-    overflow: hidden;
-    group: true;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0;
-    width: 3px; height: 0;
-    background: var(--accent1);
-    transition: height 0.4s;
-  }
-  .service-card:hover::before { height: 100%; }
-  .service-card:hover { background: rgba(255,61,0,0.04); }
-  .service-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    color: rgba(255,255,255,0.04);
-    position: absolute;
-    top: 1rem; right: 1.5rem;
-    line-height: 1;
-    transition: color 0.4s;
-  }
-  .service-card:hover .service-num { color: rgba(255,61,0,0.1); }
-  .service-icon {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-  .service-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--white);
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-  }
-  .service-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-  .service-tags {
-    margin-top: 1.5rem;
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-  }
-  .service-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    color: var(--accent3);
-    text-transform: uppercase;
-  }
-  .service-tag::before { content: '#'; opacity: 0.5; }
-
-  /* PORTFOLIO */
-  #portfolio { background: var(--surface); border-top: 1px solid var(--border); }
-
-  .portfolio-filter {
-    display: flex; gap: 0.8rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-  }
-  .filter-btn {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 0.6rem 1.5rem;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.3s;
-    border-radius: 2px;
-  }
-  .filter-btn.active, .filter-btn:hover {
-    border-color: var(--accent1);
-    color: var(--accent1);
-    background: rgba(255,61,0,0.05);
-  }
-
-  .portfolio-masonry {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: 120px;
-    gap: 12px;
-  }
-  .portfolio-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    background: var(--card);
-    border: 1px solid var(--border);
-  }
-  .pi-1 { grid-column: span 5; grid-row: span 3; }
-  .pi-2 { grid-column: span 7; grid-row: span 2; }
-  .pi-3 { grid-column: span 4; grid-row: span 2; }
-  .pi-4 { grid-column: span 3; grid-row: span 3; }
-  .pi-5 { grid-column: span 5; grid-row: span 2; }
-  .pi-6 { grid-column: span 4; grid-row: span 3; }
-  .pi-7 { grid-column: span 8; grid-row: span 2; }
-
-  .portfolio-item-bg {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
-    transition: transform 0.6s ease;
-  }
-  .portfolio-item:hover .portfolio-item-bg { transform: scale(1.08); }
-
-  .portfolio-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.2) 60%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 1.5rem;
-  }
-  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-  .portfolio-item-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: var(--white);
-    letter-spacing: 1px;
-  }
-  .portfolio-item-cat {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    color: var(--accent1);
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
-  }
-  .portfolio-item-tag {
-    position: absolute; top: 1rem; left: 1rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    background: var(--accent1);
-    color: var(--white);
-    padding: 0.2rem 0.6rem;
-    text-transform: uppercase;
-  }
-
-  /* gradient backgrounds for portfolio items */
-  .grad-a { background: linear-gradient(135deg, #1a0a00, #3d1200, #ff3d00 200%); }
-  .grad-b { background: linear-gradient(135deg, #001a1a, #003d3d, #00e5ff 200%); }
-  .grad-c { background: linear-gradient(135deg, #1a1a00, #3d3d00, #ffd600 200%); }
-  .grad-d { background: linear-gradient(135deg, #0a001a, #1a0033, #9b59b6 200%); }
-  .grad-e { background: linear-gradient(135deg, #001a00, #003300, #00ff88 200%); }
-  .grad-f { background: linear-gradient(135deg, #1a0011, #33001a, #ff006e 200%); }
-  .grad-g { background: linear-gradient(135deg, #0d1117, #1a2236, #4a90e2 200%); }
-
-  /* COMPANIES */
-  #companies { background: var(--bg); }
-  .companies-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 4rem;
-  }
-  .company-card {
-    background: var(--surface);
-    padding: 3rem 2rem;
-    text-align: center;
-    transition: background 0.3s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-  .company-card::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(255,61,0,0.08), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .company-card:hover::after { opacity: 1; }
-  .company-logo-circle {
-    width: 70px; height: 70px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem;
-    border: 1px solid var(--border);
-    background: var(--card);
-    transition: border-color 0.3s;
-  }
-  .company-card:hover .company-logo-circle { border-color: var(--accent1); }
-  .company-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    color: var(--white);
-    letter-spacing: 1px;
-    margin-bottom: 0.3rem;
-  }
-  .company-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--accent1);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-  .company-period {
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  .company-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-top: 1rem;
-  }
-
-  /* TESTIMONIALS */
-  #testimonials { background: var(--surface); border-top: 1px solid var(--border); }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .testimonial-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    position: relative;
-    transition: all 0.4s;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-  }
-  .testimonial-card::before {
-    content: '"';
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 8rem;
-    color: rgba(255,61,0,0.08);
-    position: absolute;
-    top: -1rem; left: 1rem;
-    line-height: 1;
-  }
-  .testimonial-card:hover {
-    border-color: rgba(255,61,0,0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(255,61,0,0.1);
-  }
-  .testimonial-rating {
-    display: flex; gap: 4px;
-    margin-bottom: 1.5rem;
-  }
-  .star { color: var(--accent2); font-size: 0.9rem; }
-  .testimonial-text {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    position: relative; z-index: 1;
-  }
-  .testimonial-author {
-    display: flex; align-items: center; gap: 1rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-  }
-  .author-avatar {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-  .author-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--white);
-  }
-  .author-company {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--accent1);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 0.2rem;
-  }
-
-  /* PROCESS */
-  #process { background: var(--bg); }
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    position: relative;
-    margin-top: 4rem;
-  }
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 40px; left: 10%; right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent1), var(--accent2), var(--accent3), transparent);
-    z-index: 0;
-  }
-  .process-step {
-    text-align: center;
-    padding: 0 1.5rem;
-    position: relative; z-index: 1;
-  }
-  .step-circle {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 2rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--muted);
-    transition: all 0.4s;
-    cursor: default;
-  }
-  .process-step:hover .step-circle {
-    border-color: var(--accent1);
-    color: var(--accent1);
-    box-shadow: 0 0 30px rgba(255,61,0,0.2);
-  }
-  .step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    color: var(--white);
-    letter-spacing: 1px;
-    margin-bottom: 0.8rem;
-  }
-  .step-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* CONTACT */
-  #contact {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 6rem;
-    align-items: start;
-  }
-  .contact-info-item {
-    display: flex; align-items: flex-start; gap: 1.5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .contact-icon {
-    width: 48px; height: 48px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    transition: all 0.3s;
-  }
-  .contact-info-item:hover .contact-icon {
-    border-color: var(--accent1);
-    background: rgba(255,61,0,0.1);
-  }
-  .contact-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--accent1);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-  .contact-value {
-    font-size: 1rem;
-    color: var(--text);
-    font-weight: 500;
-  }
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-  .form-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .form-input, .form-textarea {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 1rem 1.2rem;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    outline: none;
-    transition: all 0.3s;
-    border-radius: 0;
-    resize: none;
-  }
-  .form-input:focus, .form-textarea:focus {
-    border-color: var(--accent1);
-    background: rgba(255,61,0,0.03);
-  }
-  .form-textarea { min-height: 140px; }
-  .form-submit {
-    background: var(--accent1);
-    color: var(--white);
-    padding: 1.1rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-  }
-  .form-submit:hover { background: #e63600; }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    padding: 3rem 4rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    color: var(--white);
-    letter-spacing: 2px;
-  }
-  .footer-logo span { color: var(--accent1); }
-  .footer-links {
-    display: flex; gap: 2rem;
-  }
-  .footer-links a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-  .footer-links a:hover { color: var(--accent1); }
-  .footer-copy {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
-
-  /* SOCIAL SIDEBAR */
-  .social-sidebar {
-    position: fixed;
-    right: 2rem; top: 50%;
-    transform: translateY(-50%);
-    display: flex; flex-direction: column;
-    align-items: center; gap: 1rem;
-    z-index: 50;
-  }
-  .social-link {
-    width: 38px; height: 38px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none;
-    font-size: 1rem;
-    color: var(--muted);
-    transition: all 0.3s;
-  }
-  .social-link:hover {
-    border-color: var(--accent1);
-    color: var(--accent1);
-    transform: translateX(-3px);
-  }
-  .social-sidebar::before, .social-sidebar::after {
-    content: '';
-    width: 1px; height: 50px;
-    background: var(--border);
-  }
-
-  /* MARQUEE */
-  .marquee-section {
-    background: var(--accent1);
-    padding: 1.2rem 0;
-    overflow: hidden;
-    display: flex;
-    border-top: none;
-  }
-  .marquee-track {
-    display: flex;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-  .marquee-item {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    color: var(--white);
-    padding: 0 2rem;
-    display: flex; align-items: center; gap: 2rem;
-  }
-  .marquee-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.4); border-radius: 50%; }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible {
-    opacity: 1; transform: translateY(0);
-  }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-  .reveal-delay-5 { transition-delay: 0.5s; }
-
-  /* MOBILE */
-  @media (max-width: 900px) {
-    nav { padding: 1.2rem 2rem; }
-    .nav-links { display: none; }
-    #hero, section { padding: 6rem 2rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { max-height: 300px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .portfolio-masonry { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
-    .pi-1,.pi-2,.pi-3,.pi-4,.pi-5,.pi-6,.pi-7 { grid-column: span 1; grid-row: span 1; }
-    .companies-grid { grid-template-columns: 1fr 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .process-steps::before { display: none; }
-    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .stats-bar { flex-direction: column; }
-    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
-    .social-sidebar { display: none; }
-    .form-row { grid-template-columns: 1fr; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  }
+/* MOBILE */
+@media(max-width:960px){
+  nav{padding:1.2rem 2rem;}.nav-links{display:none;}
+  #hero{padding:7rem 2rem 4rem;}.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}
+  section{padding:5rem 2rem;}
+  .about-wrap{grid-template-columns:1fr;gap:3rem;}
+  .about-frame{max-height:280px;aspect-ratio:unset;}
+  .spec-cards{grid-template-columns:1fr;}
+  .services-double,.services-intro{flex-direction:column;}
+  .services-intro{align-items:flex-start;gap:1rem;}
+  .port-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px;}
+  .pi-1,.pi-2,.pi-3,.pi-4,.pi-5,.pi-6,.pi-7{grid-column:span 1;grid-row:span 1;}
+  .email-banner{grid-template-columns:1fr;}.eb-metrics{flex-direction:row;}
+  .em-grid{grid-template-columns:1fr;}
+  .co-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;}.pc-step::after{display:none;}
+  .contact-wrap{grid-template-columns:1fr;gap:3rem;}
+  .stats-row{grid-template-columns:1fr 1fr;}.stat-box:nth-child(2){border-right:none;}
+  footer{flex-direction:column;gap:1.5rem;text-align:center;}
+  .side-bar,.hero-dual{display:none;}
+  .port-header{flex-direction:column;align-items:flex-start;gap:1.5rem;}
+  .cf-row{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
-<!-- Social Sidebar -->
-<div class="social-sidebar">
-  <a href="#" class="social-link" title="Behance">𝔹</a>
-  <a href="#" class="social-link" title="Dribbble">🏀</a>
-  <a href="#" class="social-link" title="LinkedIn">in</a>
-  <a href="#" class="social-link" title="Instagram">◻</a>
+<div class="side-bar">
+  <a href="#" class="side-link" title="Behance">𝔹</a>
+  <a href="#" class="side-link" title="LinkedIn">in</a>
+  <a href="#" class="side-link" title="Dribbble">◉</a>
+  <a href="#" class="side-link" title="Instagram">◻</a>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">SH<span>.</span></div>
+<nav id="navbar">
+  <div class="nav-logo">shu<em>vo</em><em>.</em></div>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#portfolio">Portfolio</a>
+    <a href="#email-mkt">Email Mkt</a>
     <a href="#companies">Experience</a>
     <a href="#testimonials">Reviews</a>
-    <a href="#contact" class="nav-cta">Hire Me</a>
+    <a href="#contact" class="nav-hire">Hire Me</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-orb orb1"></div>
-  <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Available for Freelance</div>
-    <div class="hero-name">
-      SHU<span class="accent">VO</span><br>
-      <span class="outline">DESIGNS</span>
+  <div class="hero-mesh"></div><div class="hero-grid"></div>
+  <div class="hero-shape hs1"></div><div class="hero-shape hs2"></div><div class="hero-shape hs3"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag"><span class="hero-tag-dot"></span>Available for new projects</div>
+      <h1 class="hero-h1">
+        Creative
+        <span class="line2">Designer &</span>
+        <span class="line3">Marketer.</span>
+      </h1>
+      <p class="hero-sub">I craft <strong style="color:var(--text)">high-impact visuals</strong>, motion content, and <strong style="color:var(--text)">data-driven email campaigns</strong> that make brands grow. Based in Bangladesh 🇧🇩, working globally.</p>
+      <div class="hero-dual">
+        <div class="dual-pill"><span>🎨</span><div><strong>Graphics & Motion</strong>Photoshop · Illustrator · After Effects · Figma</div></div>
+        <div class="dual-pill"><span>📧</span><div><strong>Email Marketing</strong>Campaigns · Automation · Strategy</div></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-grad">View My Work →</a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
     </div>
-    <p class="hero-title">
-      Graphics Designer & Visual Storyteller — crafting high-impact visuals, motion designs, and campaign artwork that makes brands unforgettable.
-    </p>
-    <div class="hero-tools">
-      <span class="tool-badge">Photoshop</span>
-      <span class="tool-badge">Illustrator</span>
-      <span class="tool-badge">After Effects</span>
-      <span class="tool-badge">Figma</span>
-      <span class="tool-badge">Canva</span>
-      <span class="tool-badge">CapCut</span>
+    <div class="hero-right">
+      <div class="role-card">
+        <div class="role-card-top">
+          <div class="role-icon ri-design">🎨</div>
+          <div><div class="role-title">Graphics Designer & Visualizer</div><div class="role-sub">Adobe CC · Figma · Canva · CapCut</div></div>
+        </div>
+        <div class="role-tools">
+          <span class="rtool">Photoshop</span><span class="rtool">Illustrator</span><span class="rtool">After Effects</span><span class="rtool">Figma</span><span class="rtool">Canva</span><span class="rtool">CapCut</span>
+        </div>
+      </div>
+      <div class="role-card rc-email">
+        <div class="role-card-top">
+          <div class="role-icon ri-email">📧</div>
+          <div><div class="role-title">Email Marketing Manager</div><div class="role-sub">Campaigns · Automation · Analytics</div></div>
+        </div>
+        <div class="role-tools">
+          <span class="rtool">Mailchimp</span><span class="rtool">Klaviyo</span><span class="rtool">ActiveCampaign</span><span class="rtool">A/B Testing</span><span class="rtool">Segmentation</span>
+        </div>
+      </div>
     </div>
-    <div class="hero-cta">
-      <a href="#portfolio" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-outline">Let's Talk</a>
-    </div>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll to explore
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <span class="stat-num"><span class="counter" data-target="50">0</span><span>+</span></span>
-    <div class="stat-label">Projects Completed</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-1">
-    <span class="stat-num"><span class="counter" data-target="8">0</span><span>+</span></span>
-    <div class="stat-label">Companies Worked With</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-2">
-    <span class="stat-num"><span class="counter" data-target="3">0</span><span>+</span></span>
-    <div class="stat-label">Years Experience</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-3">
-    <span class="stat-num"><span class="counter" data-target="100">0</span><span>%</span></span>
-    <div class="stat-label">Client Satisfaction</div>
-  </div>
-</div>
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track">
+  <div class="ticker-item">Brand Identity <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Motion Design <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Email Campaigns <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Video Editing <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Marketing Automation <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Social Graphics <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">A/B Testing <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Email Funnels <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Brand Identity <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Motion Design <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Email Campaigns <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Video Editing <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Marketing Automation <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Social Graphics <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">A/B Testing <span class="ticker-sep">◆</span></div>
+  <div class="ticker-item">Email Funnels <span class="ticker-sep">◆</span></div>
+</div></div>
 
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item">Brand Identity <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Motion Design <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Video Editing <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Social Media Graphics <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Campaign Design <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Visual Storytelling <span class="marquee-dot"></span></div>
-    <div class="marquee-item">UI Graphics <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Brand Identity <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Motion Design <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Video Editing <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Social Media Graphics <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Campaign Design <span class="marquee-dot"></span></div>
-    <div class="marquee-item">Visual Storytelling <span class="marquee-dot"></span></div>
-    <div class="marquee-item">UI Graphics <span class="marquee-dot"></span></div>
-  </div>
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-box reveal"><div class="stat-n"><span class="counter" data-t="60">0</span><span style="color:var(--accent)">+</span></div><div class="stat-l">Projects Delivered</div></div>
+  <div class="stat-box reveal rd1"><div class="stat-n"><span class="counter" data-t="8">0</span><span style="color:var(--accent)">+</span></div><div class="stat-l">Companies Worked With</div></div>
+  <div class="stat-box reveal rd2"><div class="stat-n"><span class="counter" data-t="200">0</span><span style="color:var(--accent3)">K+</span></div><div class="stat-l">Emails Sent</div></div>
+  <div class="stat-box reveal rd3"><div class="stat-n"><span class="counter" data-t="38">0</span><span style="color:var(--yellow)">%</span></div><div class="stat-l">Avg Email Open Rate</div></div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-grid">
-    <div class="about-visual reveal">
-      <div class="about-photo-frame">
-        <div class="about-photo-placeholder">S</div>
+  <div class="about-wrap">
+    <div class="about-photo-wrap reveal">
+      <div class="about-frame">
+        <!-- ✏️ REPLACE WITH YOUR PHOTO: <img src="assets/images/your-photo.jpg" alt="Shuvo"> -->
+        <div class="about-frame-inner">S</div>
       </div>
-      <div class="about-corner-tag"></div>
-      <div class="about-badge">
-        <div class="about-badge-num">3+</div>
-        <div class="about-badge-text">Years of<br>Excellence</div>
-      </div>
+      <div class="about-avail"><span class="avail-dot"></span>Open to work</div>
+      <div class="about-exp-badge"><div class="aeb-num">3+</div><div class="aeb-text">Years<br>Experience</div></div>
     </div>
-
-    <div class="about-text">
-      <div class="section-label">About Me</div>
-      <h2 class="section-title" style="margin-bottom: 2rem;">The Creative<br><span class="muted">Behind</span> The Work</h2>
-
-      <p>I'm <strong>Shuvo</strong>, a passionate <em>Graphics Designer & Visual Storyteller</em> based in Bangladesh. I specialize in crafting bold, meaningful visuals that drive campaigns and leave lasting impressions.</p>
-
-      <p>With expertise in the full <strong>Adobe Creative Suite</strong> — Photoshop, Illustrator, After Effects — plus Figma, Canva, and CapCut, I bring brands to life through graphics, videos, and motion design that convert.</p>
-
-      <p>From high-energy social media campaigns to polished brand identities, I've partnered with companies across various industries to deliver <em>design that performs</em>.</p>
-
-      <div class="skills-grid">
-        <div class="skill-row">
-          <div class="skill-name">Photoshop <span>98%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-name">Illustrator <span>92%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-name">After Effects <span>88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-name">Figma <span>85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-name">Canva <span>95%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-name">CapCut <span>90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-        </div>
+    <div class="about-content">
+      <div class="sec-label reveal">Who I Am</div>
+      <h2 class="sec-title reveal" style="margin-bottom:1.5rem;">The Creative &<br><span class="grad">The Strategist</span></h2>
+      <p class="reveal">I'm <strong>Shuvo</strong>, a dual-skilled professional based in Bangladesh. I operate at the intersection of <em>visual design</em> and <em>digital marketing</em> — two disciplines that work best together.</p>
+      <p class="reveal">As a <strong>Graphics Designer & Visualizer</strong>, I craft stunning brand identities, motion graphics, and campaign visuals using Photoshop, Illustrator, After Effects, Figma, Canva, and CapCut.</p>
+      <p class="reveal">As an <strong>Email Marketing Manager</strong>, I build and manage email campaigns, automation flows, and segmentation strategies that deliver real, measurable ROI for brands.</p>
+      <div class="spec-cards reveal">
+        <div class="spec-card"><div class="spec-icon">🎨</div><div class="spec-name">Design & Visuals</div><div class="spec-desc">Graphics, motion, video, UI mockups — all built to captivate and convert.</div></div>
+        <div class="spec-card spec-card-em"><div class="spec-icon">📧</div><div class="spec-name">Email Marketing</div><div class="spec-desc">Strategy, campaigns, automation, and analytics that drive revenue.</div></div>
+      </div>
+      <div class="skills-wrap reveal">
+        <div class="skill-item"><div class="skill-head">Adobe Photoshop <span>98%</span></div><div class="skill-track"><div class="skill-bar sb-design" data-w="98"></div></div></div>
+        <div class="skill-item"><div class="skill-head">After Effects / Motion <span>88%</span></div><div class="skill-track"><div class="skill-bar sb-design" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="skill-head">Email Campaign Strategy <span>92%</span></div><div class="skill-track"><div class="skill-bar sb-email" data-w="92"></div></div></div>
+        <div class="skill-item"><div class="skill-head">Mailchimp / Klaviyo <span>90%</span></div><div class="skill-track"><div class="skill-bar sb-email" data-w="90"></div></div></div>
+        <div class="skill-item"><div class="skill-head">Figma / Canva <span>93%</span></div><div class="skill-track"><div class="skill-bar sb-design" data-w="93"></div></div></div>
       </div>
     </div>
   </div>
@@ -1168,78 +466,27 @@
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">What I Do</div>
-      <h2 class="section-title">My <span class="muted">Creative</span><br>Services</h2>
-    </div>
+  <div class="services-intro">
+    <div><div class="sec-label reveal">What I Offer</div><h2 class="sec-title reveal">My <span class="ghost">Full</span><br><span class="grad">Service Suite</span></h2></div>
+    <p class="reveal">Two powerhouse skill sets — one creative partner. Beautiful design meets smart marketing strategy.</p>
   </div>
-
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-num">01</span>
-      <span class="service-icon">🎨</span>
-      <div class="service-title">Brand Identity & Graphic Design</div>
-      <p class="service-desc">Logos, visual systems, brand guidelines, and marketing collateral that make your brand instantly recognizable and unforgettable.</p>
-      <div class="service-tags">
-        <span class="service-tag">Logo Design</span>
-        <span class="service-tag">Brand Kit</span>
-        <span class="service-tag">Print</span>
+  <div class="services-double">
+    <div class="service-col reveal">
+      <div class="service-col-head sch-design"><span class="sch-icon">🎨</span><div><div class="sch-title">Design & Visual Production</div><div class="sch-sub">Adobe CC · Figma · Canva · CapCut</div></div></div>
+      <div class="service-cards-list">
+        <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">Brand Identity Design</div><p class="svc-desc">Logos, visual systems, style guides, and brand kits that make your brand instantly recognizable.</p><div class="svc-tags"><span class="svc-tag">Logo</span><span class="svc-tag">Brand Kit</span><span class="svc-tag">Style Guide</span></div></div>
+        <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">Motion Design & Video</div><p class="svc-desc">Animations, explainer videos, intros, reels, and motion graphics in After Effects & CapCut.</p><div class="svc-tags"><span class="svc-tag">After Effects</span><span class="svc-tag">Reels</span><span class="svc-tag">Animation</span></div></div>
+        <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">Social Media Graphics</div><p class="svc-desc">Scroll-stopping posts, stories, banners, and ad creatives that drive engagement and clicks.</p><div class="svc-tags"><span class="svc-tag">Instagram</span><span class="svc-tag">Facebook</span><span class="svc-tag">Ads</span></div></div>
+        <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">Campaign Visual Assets</div><p class="svc-desc">Full campaign visual packages — cohesive creative assets across all touchpoints.</p><div class="svc-tags"><span class="svc-tag">Campaign</span><span class="svc-tag">Concept</span><span class="svc-tag">Assets</span></div></div>
       </div>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <span class="service-num">02</span>
-      <span class="service-icon">🎬</span>
-      <div class="service-title">Motion Design & Video</div>
-      <p class="service-desc">Eye-catching animations, explainer videos, intros/outros, and motion graphics crafted in After Effects and CapCut for maximum engagement.</p>
-      <div class="service-tags">
-        <span class="service-tag">After Effects</span>
-        <span class="service-tag">Animation</span>
-        <span class="service-tag">Reels</span>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <span class="service-num">03</span>
-      <span class="service-icon">📱</span>
-      <div class="service-title">Social Media Design</div>
-      <p class="service-desc">Scroll-stopping posts, stories, banners, and ad creatives optimized for all major platforms — designed for engagement and conversion.</p>
-      <div class="service-tags">
-        <span class="service-tag">Instagram</span>
-        <span class="service-tag">Facebook</span>
-        <span class="service-tag">LinkedIn</span>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-3">
-      <span class="service-num">04</span>
-      <span class="service-icon">🚀</span>
-      <div class="service-title">Campaign Visualization</div>
-      <p class="service-desc">Full campaign visual packages — from concept to delivery. Cohesive creative assets that tell a compelling story across every touchpoint.</p>
-      <div class="service-tags">
-        <span class="service-tag">Strategy</span>
-        <span class="service-tag">Concept Art</span>
-        <span class="service-tag">Assets</span>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-4">
-      <span class="service-num">05</span>
-      <span class="service-icon">🖼️</span>
-      <div class="service-title">Photo Editing & Retouching</div>
-      <p class="service-desc">Professional photo manipulation, retouching, color grading, and compositing in Photoshop that elevates raw photos into polished visuals.</p>
-      <div class="service-tags">
-        <span class="service-tag">Retouching</span>
-        <span class="service-tag">Color Grade</span>
-        <span class="service-tag">Composite</span>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-5">
-      <span class="service-num">06</span>
-      <span class="service-icon">💡</span>
-      <div class="service-title">UI/UX Mockups & Prototypes</div>
-      <p class="service-desc">Beautiful interface mockups and interactive prototypes in Figma — bridging the gap between concept and development-ready design.</p>
-      <div class="service-tags">
-        <span class="service-tag">Figma</span>
-        <span class="service-tag">Wireframe</span>
-        <span class="service-tag">Prototype</span>
+    <div class="service-col svc-email reveal rd2">
+      <div class="service-col-head sch-email"><span class="sch-icon">📧</span><div><div class="sch-title">Email Marketing Management</div><div class="sch-sub">Mailchimp · Klaviyo · ActiveCampaign</div></div></div>
+      <div class="service-cards-list">
+        <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">Email Campaign Strategy</div><p class="svc-desc">End-to-end campaign planning — goal-setting, audience segmentation, send-time optimization, and reporting.</p><div class="svc-tags"><span class="svc-tag">Strategy</span><span class="svc-tag">Planning</span><span class="svc-tag">Analytics</span></div></div>
+        <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">Email Template Design</div><p class="svc-desc">Pixel-perfect, responsive HTML email templates that render beautifully across all devices and clients.</p><div class="svc-tags"><span class="svc-tag">HTML Email</span><span class="svc-tag">Responsive</span><span class="svc-tag">Design</span></div></div>
+        <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">Automation & Flows</div><p class="svc-desc">Welcome sequences, abandoned cart, drip campaigns, and lifecycle automations that convert on autopilot.</p><div class="svc-tags"><span class="svc-tag">Automation</span><span class="svc-tag">Drip</span><span class="svc-tag">Klaviyo</span></div></div>
+        <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">List Growth & Segmentation</div><p class="svc-desc">Build high-quality lists, segment by behavior, and personalize content for maximum deliverability and ROI.</p><div class="svc-tags"><span class="svc-tag">Segmentation</span><span class="svc-tag">A/B Test</span><span class="svc-tag">Growth</span></div></div>
       </div>
     </div>
   </div>
@@ -1247,469 +494,183 @@
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
-  <div class="section-header reveal">
+  <div class="port-header reveal">
+    <div><div class="sec-label">Selected Work</div><h2 class="sec-title">Portfolio <span class="ghost">Showcase</span></h2></div>
+    <div class="port-filters">
+      <button class="pf-btn active">All</button>
+      <button class="pf-btn">Branding</button>
+      <button class="pf-btn">Motion</button>
+      <button class="pf-btn">Social Media</button>
+      <button class="pf-btn">Email Design</button>
+      <button class="pf-btn">Campaign</button>
+    </div>
+  </div>
+  <div class="port-grid reveal">
+    <div class="pi pi-1"><span class="pi-badge pib-design">Branding</span>
+      <!-- ✏️ Replace .pi-bg with: <img src="assets/images/project1.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+      <div class="pi-bg pg1">🔥</div><div class="pi-ov"><div class="pi-cat">Brand Identity</div><div class="pi-name">Bold Brand Campaign</div></div></div>
+    <div class="pi pi-2"><span class="pi-badge pib-email">Email</span><div class="pi-bg pg2">📧</div><div class="pi-ov"><div class="pi-cat em">Email Marketing</div><div class="pi-name">E-commerce Email Funnel</div></div></div>
+    <div class="pi pi-3"><span class="pi-badge pib-design">Motion</span><div class="pi-bg pg3">🎬</div><div class="pi-ov"><div class="pi-cat">Motion Design</div><div class="pi-name">Product Animation</div></div></div>
+    <div class="pi pi-4"><span class="pi-badge pib-email">Email</span><div class="pi-bg pg4">📨</div><div class="pi-ov"><div class="pi-cat em">Email Design</div><div class="pi-name">Newsletter Template</div></div></div>
+    <div class="pi pi-5"><span class="pi-badge pib-design">Social</span><div class="pi-bg pg5">📱</div><div class="pi-ov"><div class="pi-cat">Social Media</div><div class="pi-name">Ramadan Campaign Pack</div></div></div>
+    <div class="pi pi-6"><span class="pi-badge pib-design">Campaign</span><div class="pi-bg pg6">✨</div><div class="pi-ov"><div class="pi-cat">Campaign</div><div class="pi-name">360° Launch Campaign</div></div></div>
+    <div class="pi pi-7"><span class="pi-badge pib-email">Email</span><div class="pi-bg pg7">🚀</div><div class="pi-ov"><div class="pi-cat em">Email Campaign</div><div class="pi-name">Automated Welcome Sequence</div></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--muted);letter-spacing:2px;margin-bottom:1.2rem;">✏️ REPLACE GRADIENT PLACEHOLDERS WITH YOUR REAL IMAGES & VIDEOS</p>
+    <a href="#contact" class="btn-grad">Start a Project →</a>
+  </div>
+</section>
+
+<!-- EMAIL MARKETING DEEP DIVE -->
+<section id="email-mkt">
+  <div class="sec-label reveal">Email Marketing</div>
+  <h2 class="sec-title reveal" style="margin-bottom:3rem;">Campaigns That<br><span class="grad">Actually Convert</span></h2>
+  <div class="email-banner reveal">
     <div>
-      <div class="section-label">My Work</div>
-      <h2 class="section-title">Selected <span class="muted">Portfolio</span></h2>
+      <div class="eb-label">Email Marketing Expertise</div>
+      <div class="eb-title">Strategy + Design + Delivery = Results</div>
+      <p class="eb-desc">I don't just send emails — I build complete email marketing systems. From list strategy and automation flows to beautifully designed templates and data-driven optimization, I handle the full lifecycle.</p>
+    </div>
+    <div class="eb-metrics">
+      <div class="eb-metric"><div class="eb-mn">38%</div><div class="eb-ml">Avg Open Rate</div></div>
+      <div class="eb-metric"><div class="eb-mn">6.2%</div><div class="eb-ml">Avg Click Rate</div></div>
     </div>
   </div>
-
-  <div class="portfolio-filter reveal">
-    <button class="filter-btn active">All Work</button>
-    <button class="filter-btn">Branding</button>
-    <button class="filter-btn">Motion</button>
-    <button class="filter-btn">Social Media</button>
-    <button class="filter-btn">Campaign</button>
-    <button class="filter-btn">Photo Edit</button>
-  </div>
-
-  <div class="portfolio-masonry reveal">
-    <div class="portfolio-item pi-1">
-      <div class="portfolio-item-tag">Featured</div>
-<div class="portfolio-item-bg" style="background: none;">
-  <img src="assets/images/work sample inquest.png" style="width:100%; height:100%; object-fit:cover;">
-</div>      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Brand Identity</div>
-        <div class="portfolio-item-title">Bold Brand Campaign</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-2">
-      <div class="portfolio-item-bg grad-b">🎬</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Motion Design</div>
-        <div class="portfolio-item-title">Product Launch Animation</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-3">
-      <div class="portfolio-item-bg grad-c">✨</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Social Media</div>
-        <div class="portfolio-item-title">Ramadan Campaign Pack</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-4">
-      <div class="portfolio-item-bg grad-d">🎨</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Branding</div>
-        <div class="portfolio-item-title">Logo System Design</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-5">
-      <div class="portfolio-item-bg grad-e">📸</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Photo Edit</div>
-        <div class="portfolio-item-title">Product Photography</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-6">
-      <div class="portfolio-item-bg grad-f">💫</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Motion</div>
-        <div class="portfolio-item-title">Social Media Reels</div>
-      </div>
-    </div>
-    <div class="portfolio-item pi-7">
-      <div class="portfolio-item-bg grad-g">🚀</div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-item-cat">Campaign</div>
-        <div class="portfolio-item-title">360° Digital Campaign</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="text-align:center; margin-top: 3rem;" class="reveal">
-    <p style="font-family: 'Space Mono', monospace; font-size:0.7rem; color: var(--muted); letter-spacing: 2px; margin-bottom: 1.5rem;">REPLACE PLACEHOLDERS WITH YOUR REAL WORK IMAGES</p>
-    <a href="#contact" class="btn-primary">Start a Project →</a>
+  <div class="em-grid">
+    <div class="em-card reveal"><div class="em-icon">📋</div><div class="em-title">Campaign Strategy & Planning</div><p class="em-desc">Full email marketing roadmaps aligned to your business goals — promotional calendars, segmentation plans, and KPI frameworks that keep campaigns profitable.</p><div class="em-tools"><span class="em-tool">Strategy</span><span class="em-tool">Planning</span><span class="em-tool">KPIs</span></div></div>
+    <div class="em-card reveal rd1"><div class="em-icon">🎨</div><div class="em-title">Email Template Design</div><p class="em-desc">Responsive HTML email templates that look stunning on every device. On-brand, accessible, and optimized for deliverability — combining my design skills for maximum visual impact.</p><div class="em-tools"><span class="em-tool">HTML Email</span><span class="em-tool">Responsive</span><span class="em-tool">Photoshop</span></div></div>
+    <div class="em-card reveal rd2"><div class="em-icon">⚡</div><div class="em-title">Automation & Sequences</div><p class="em-desc">Welcome series, abandoned cart, post-purchase, win-back, and nurture sequences — automated flows that convert leads and retain customers 24/7.</p><div class="em-tools"><span class="em-tool">Klaviyo</span><span class="em-tool">Mailchimp</span><span class="em-tool">ActiveCampaign</span></div></div>
+    <div class="em-card reveal rd1"><div class="em-icon">🎯</div><div class="em-title">Segmentation & Personalization</div><p class="em-desc">Slice your audience by behavior, purchase history, and demographics to send the right message to the right person at exactly the right time.</p><div class="em-tools"><span class="em-tool">Segmentation</span><span class="em-tool">Personalization</span><span class="em-tool">Tagging</span></div></div>
+    <div class="em-card reveal rd2"><div class="em-icon">🧪</div><div class="em-title">A/B Testing & Optimization</div><p class="em-desc">Continuously test subject lines, send times, CTAs, and content to squeeze more performance from every campaign. Data-backed decisions, not guesswork.</p><div class="em-tools"><span class="em-tool">A/B Testing</span><span class="em-tool">Analytics</span><span class="em-tool">CRO</span></div></div>
+    <div class="em-card reveal rd3"><div class="em-icon">📊</div><div class="em-title">Reporting & Analytics</div><p class="em-desc">Clear, actionable reports on open rates, click rates, revenue attribution, and list health — so you always know exactly how your email program is performing.</p><div class="em-tools"><span class="em-tool">Reporting</span><span class="em-tool">Revenue</span><span class="em-tool">Deliverability</span></div></div>
   </div>
 </section>
 
 <!-- COMPANIES -->
 <section id="companies">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Experience</div>
-      <h2 class="section-title">Companies I've <span class="muted">Worked</span> With</h2>
-    </div>
-  </div>
-
-  <div class="companies-grid">
-    <div class="company-card reveal">
-      <div class="company-logo-circle">🏢</div>
-      <div class="company-name">Company One</div>
-      <div class="company-role">Graphics Designer</div>
-      <div class="company-period">2022 – 2023</div>
-      <p class="company-desc">Created brand assets, social media campaigns, and motion graphics for product launches.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-1">
-      <div class="company-logo-circle">🌐</div>
-      <div class="company-name">Company Two</div>
-      <div class="company-role">Visual Designer</div>
-      <div class="company-period">2023 – 2023</div>
-      <p class="company-desc">Designed digital marketing materials and managed visual consistency across platforms.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-2">
-      <div class="company-logo-circle">📺</div>
-      <div class="company-name">Company Three</div>
-      <div class="company-role">Motion Designer</div>
-      <div class="company-period">2023 – 2024</div>
-      <p class="company-desc">Produced video content and animated assets for broadcast and digital campaigns.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-3">
-      <div class="company-logo-circle">🎯</div>
-      <div class="company-name">Company Four</div>
-      <div class="company-role">Creative Lead</div>
-      <div class="company-period">2024 – Present</div>
-      <p class="company-desc">Leading creative direction for major campaign rollouts and brand strategy initiatives.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-1">
-      <div class="company-logo-circle">🛍️</div>
-      <div class="company-name">Company Five</div>
-      <div class="company-role">Graphic Designer</div>
-      <div class="company-period">Freelance</div>
-      <p class="company-desc">E-commerce visuals, product banners, and packaging design for retail campaigns.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-2">
-      <div class="company-logo-circle">📱</div>
-      <div class="company-name">Company Six</div>
-      <div class="company-role">Social Media Designer</div>
-      <div class="company-period">Freelance</div>
-      <p class="company-desc">Content calendar design and social media creatives for organic + paid campaigns.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-3">
-      <div class="company-logo-circle">🏆</div>
-      <div class="company-name">Company Seven</div>
-      <div class="company-role">Brand Designer</div>
-      <div class="company-period">Freelance</div>
-      <p class="company-desc">Full brand identity packages including logos, style guides, and marketing materials.</p>
-    </div>
-    <div class="company-card reveal reveal-delay-4">
-      <div class="company-logo-circle">⚡</div>
-      <div class="company-name">Company Eight</div>
-      <div class="company-role">Video Editor</div>
-      <div class="company-period">Freelance</div>
-      <p class="company-desc">Promo videos, Reels, and short-form content optimized for social virality.</p>
-    </div>
+  <div class="sec-label reveal">Experience</div>
+  <h2 class="sec-title reveal">Companies I've <span class="ghost">Worked</span> With</h2>
+  <div class="co-grid">
+    <div class="co-card reveal"><div class="co-avatar">🏢</div><div class="co-name">Company One</div><div class="co-role">Graphics Designer</div><div class="co-period">2022 – 2023</div><p class="co-desc">Brand assets, social media campaigns, and motion graphics for product launches.</p></div>
+    <div class="co-card reveal rd1"><div class="co-avatar">📧</div><div class="co-name">Company Two</div><div class="co-role">Email Marketing Manager</div><div class="co-period">2023</div><p class="co-desc">Managed full email marketing calendar, automation flows, and grew open rates by 40%.</p></div>
+    <div class="co-card reveal rd2"><div class="co-avatar">📺</div><div class="co-name">Company Three</div><div class="co-role">Motion Designer</div><div class="co-period">2023 – 2024</div><p class="co-desc">Produced video content and animated assets for broadcast and digital campaigns.</p></div>
+    <div class="co-card reveal rd3"><div class="co-avatar">🚀</div><div class="co-name">Company Four</div><div class="co-role">Creative Lead</div><div class="co-period">2024 – Present</div><p class="co-desc">Leading creative direction for major campaign rollouts and brand strategy initiatives.</p></div>
+    <div class="co-card reveal"><div class="co-avatar">🛍️</div><div class="co-name">Company Five</div><div class="co-role">Email + Design</div><div class="co-period">Freelance</div><p class="co-desc">E-commerce email funnels, product banners, and packaging design for retail clients.</p></div>
+    <div class="co-card reveal rd1"><div class="co-avatar">📱</div><div class="co-name">Company Six</div><div class="co-role">Social Media Designer</div><div class="co-period">Freelance</div><p class="co-desc">Content calendar design and social media creatives for organic + paid campaigns.</p></div>
+    <div class="co-card reveal rd2"><div class="co-avatar">🏆</div><div class="co-name">Company Seven</div><div class="co-role">Brand Designer</div><div class="co-period">Freelance</div><p class="co-desc">Full brand identity packages including logos, style guides, and marketing materials.</p></div>
+    <div class="co-card reveal rd3"><div class="co-avatar">⚡</div><div class="co-name">Company Eight</div><div class="co-role">Email Strategist</div><div class="co-period">Freelance</div><p class="co-desc">Built automated email sequences and managed campaign calendar for DTC brand.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Client Feedback</div>
-      <h2 class="section-title">What They <span class="muted">Say</span></h2>
-    </div>
-  </div>
-
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"Shuvo delivered absolutely stunning visuals for our campaign. The motion graphics were beyond what we imagined — creative, sharp, and delivered on time. Highly recommend!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Ahmed Rahman</div>
-          <div class="author-company">Marketing Director, Company One</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal reveal-delay-1">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"Working with Shuvo was a pleasure from start to finish. He understood our brand vision perfectly and turned it into beautiful graphics. Will definitely work with him again!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Fatima Khanam</div>
-          <div class="author-company">CEO, Company Two</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"The social media content Shuvo designed for us tripled our engagement. His eye for color, composition, and trend-relevant design is unmatched. A true creative talent!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Rafiqul Islam</div>
-          <div class="author-company">Brand Manager, Company Three</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"Professional, creative, and incredibly responsive. Shuvo took our rough ideas and transformed them into a full campaign visual identity. Outstanding work!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Nasrin Begum</div>
-          <div class="author-company">Founder, Company Four</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal reveal-delay-1">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"Shuvo's After Effects animations gave our product launch video the wow factor we needed. Client feedback has been overwhelmingly positive. Brilliant work!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Kamal Hossain</div>
-          <div class="author-company">Product Lead, Company Five</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="testimonial-rating">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testimonial-text">"From concept to final delivery, Shuvo was professional, skilled, and a joy to work with. The branding package he created for us is exactly what our company needed to level up."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">👤</div>
-        <div>
-          <div class="author-name">Tahmina Akter</div>
-          <div class="author-company">Creative Director, Company Six</div>
-        </div>
-      </div>
-    </div>
+  <div class="sec-label reveal">Client Feedback</div>
+  <h2 class="sec-title reveal" style="margin-bottom:0.5rem;">What They <span class="ghost">Say</span></h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><span class="testi-badge tb-d">Design</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">Shuvo delivered absolutely stunning visuals for our campaign. The motion graphics were beyond what we imagined — creative, sharp, and on time. Highly recommend!</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Ahmed Rahman</div><div class="ta-co">Marketing Director, Company One</div></div></div></div>
+    <div class="testi-card testi-card-em reveal rd1"><span class="testi-badge tb-e">Email Mkt</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">Shuvo rebuilt our entire email program from scratch. Our open rates jumped from 18% to 41% in 3 months. The automation flows he built generate sales every single day!</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Fatima Khanam</div><div class="ta-co">CEO, Company Two</div></div></div></div>
+    <div class="testi-card reveal rd2"><span class="testi-badge tb-d">Design</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">The social media content Shuvo designed tripled our engagement. His eye for color, composition, and trend-relevant design is unmatched. A true creative talent!</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Rafiqul Islam</div><div class="ta-co">Brand Manager, Company Three</div></div></div></div>
+    <div class="testi-card testi-card-em reveal"><span class="testi-badge tb-e">Email Mkt</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">We hired Shuvo to manage our Klaviyo account and results were immediate. Beautiful templates, smart segmentation, and an abandoned cart flow that now recovers 22% of lost sales.</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Nasrin Begum</div><div class="ta-co">Founder, Company Four</div></div></div></div>
+    <div class="testi-card reveal rd1"><span class="testi-badge tb-d">Design</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">Shuvo's After Effects animations gave our product launch the wow factor we needed. He delivered on time and the quality exceeded our expectations. Will work with him again!</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Kamal Hossain</div><div class="ta-co">Product Lead, Company Five</div></div></div></div>
+    <div class="testi-card testi-card-em reveal rd2"><span class="testi-badge tb-e">Email Mkt</span><div class="tq">"</div><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testi-text">What sets Shuvo apart is combining beautiful email design with smart strategy. Our campaigns look incredible AND perform. That combination is rare and incredibly valuable.</p><div class="testi-author"><div class="ta-av">👤</div><div><div class="ta-name">Tahmina Akter</div><div class="ta-co">Creative Director, Company Six</div></div></div></div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section id="process">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">How I Work</div>
-      <h2 class="section-title">My Creative <span class="muted">Process</span></h2>
-    </div>
-  </div>
-
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="step-circle">01</div>
-      <div class="step-title">Discovery</div>
-      <p class="step-desc">Deep dive into your brand, goals, target audience, and creative vision to establish a strong foundation.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="step-circle">02</div>
-      <div class="step-title">Strategy</div>
-      <p class="step-desc">Define the visual direction, mood board, and creative strategy that will guide the entire project.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="step-circle">03</div>
-      <div class="step-title">Design</div>
-      <p class="step-desc">Craft stunning visuals, motion graphics, or videos with precision — bringing the strategy to life.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="step-circle">04</div>
-      <div class="step-title">Refine</div>
-      <p class="step-desc">Incorporate feedback, iterate, and polish until every detail is perfect and client-approved.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-4">
-      <div class="step-circle">05</div>
-      <div class="step-title">Deliver</div>
-      <p class="step-desc">Hand over final files in all required formats, ready for deployment across every platform.</p>
-    </div>
+  <div class="sec-label reveal">How I Work</div>
+  <h2 class="sec-title reveal" style="margin-bottom:0;">My <span class="ghost">Creative</span> Process</h2>
+  <div class="process-grid">
+    <div class="pc-step reveal"><div class="pc-num">01</div><div class="pc-icon">🔍</div><div class="pc-title">Discovery</div><p class="pc-desc">Deep dive into your brand, audience, goals, and current marketing performance.</p></div>
+    <div class="pc-step reveal rd1"><div class="pc-num">02</div><div class="pc-icon">🗺️</div><div class="pc-title">Strategy</div><p class="pc-desc">Build a clear roadmap — visual direction, campaign calendar, and KPIs.</p></div>
+    <div class="pc-step reveal rd2"><div class="pc-num">03</div><div class="pc-icon">✏️</div><div class="pc-title">Create</div><p class="pc-desc">Design stunning visuals and craft compelling email content that converts.</p></div>
+    <div class="pc-step reveal rd3"><div class="pc-num">04</div><div class="pc-icon">🚀</div><div class="pc-title">Launch</div><p class="pc-desc">Deploy campaigns, activate automations, and go live with precision.</p></div>
+    <div class="pc-step reveal rd4"><div class="pc-num">05</div><div class="pc-icon">📈</div><div class="pc-title">Optimize</div><p class="pc-desc">Analyze results, A/B test, refine, and keep improving performance.</p></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-grid">
+  <div class="contact-wrap">
     <div>
-      <div class="section-label reveal">Get In Touch</div>
-      <h2 class="section-title reveal" style="margin-bottom: 3rem;">Let's Create<br><span class="muted">Something</span><br>Amazing</h2>
-
-      <div class="contact-info-item reveal">
-        <div class="contact-icon">📧</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">shuvo@email.com</div>
-        </div>
-      </div>
-      <div class="contact-info-item reveal reveal-delay-1">
-        <div class="contact-icon">📱</div>
-        <div>
-          <div class="contact-label">Phone / WhatsApp</div>
-          <div class="contact-value">+880 XXX-XXXXXXX</div>
-        </div>
-      </div>
-      <div class="contact-info-item reveal reveal-delay-2">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Location</div>
-          <div class="contact-value">Bangladesh 🇧🇩</div>
-        </div>
-      </div>
-      <div class="contact-info-item reveal reveal-delay-3">
-        <div class="contact-icon">⏱️</div>
-        <div>
-          <div class="contact-label">Response Time</div>
-          <div class="contact-value">Within 24 hours</div>
-        </div>
-      </div>
+      <div class="sec-label reveal">Get In Touch</div>
+      <h2 class="sec-title reveal">Let's Build<br><span class="grad">Something Great</span></h2>
+      <p class="reveal">Whether you need stunning visuals, a high-converting email program, or both — I'm ready to help your brand grow.</p>
+      <div class="ci-item reveal"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val">shuvo@email.com</div></div></div>
+      <div class="ci-item reveal rd1"><div class="ci-icon">📱</div><div><div class="ci-label">WhatsApp / Phone</div><div class="ci-val">+880 XXX-XXXXXXX</div></div></div>
+      <div class="ci-item reveal rd2"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Bangladesh 🇧🇩 · Remote Worldwide</div></div></div>
+      <div class="ci-item reveal rd3"><div class="ci-icon">⚡</div><div><div class="ci-label">Response Time</div><div class="ci-val">Within 24 hours</div></div></div>
     </div>
-
-    <div class="reveal reveal-delay-2">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-input" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="john@email.com" required>
-          </div>
+    <div class="reveal rd2">
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div class="cf-row">
+          <div class="cf-group"><label class="cf-label">Your Name</label><input type="text" class="cf-input" placeholder="John Doe" required></div>
+          <div class="cf-group"><label class="cf-label">Email Address</label><input type="email" class="cf-input" placeholder="john@email.com" required></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Service Needed</label>
-          <input type="text" class="form-input" placeholder="e.g. Brand Identity, Motion Design, Social Media...">
+        <div class="cf-group">
+          <label class="cf-label">Service Needed</label>
+          <select class="cf-select">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Brand Identity & Logo Design</option>
+            <option>Motion Design & Video</option>
+            <option>Social Media Graphics</option>
+            <option>Campaign Visual Assets</option>
+            <option>Email Campaign Strategy</option>
+            <option>Email Template Design</option>
+            <option>Email Automation & Flows</option>
+            <option>Full Package (Design + Email Marketing)</option>
+            <option>Other</option>
+          </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">Project Budget</label>
-          <input type="text" class="form-input" placeholder="e.g. $500 – $1000">
+        <div class="cf-row">
+          <div class="cf-group"><label class="cf-label">Budget Range</label><input type="text" class="cf-input" placeholder="e.g. $300 – $800"></div>
+          <div class="cf-group"><label class="cf-label">Timeline</label><input type="text" class="cf-input" placeholder="e.g. 2 weeks"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Tell Me About Your Project</label>
-          <textarea class="form-textarea" placeholder="Describe your project, goals, timeline, and any specific requirements..."></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+        <div class="cf-group"><label class="cf-label">Project Details</label><textarea class="cf-textarea" placeholder="Tell me about your project, goals, and any specific requirements..." required></textarea></div>
+        <button type="submit" class="cf-submit" id="cf-btn">Send Message →</button>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">SH<span>.</span></div>
-  <div class="footer-links">
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+  <div class="f-logo">shu<em>vo</em><em>.</em></div>
+  <div class="f-links">
+    <a href="#hero">Home</a><a href="#about">About</a><a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a><a href="#email-mkt">Email Mkt</a><a href="#contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2025 Shuvo. All rights reserved.</div>
+  <div class="f-copy">© 2025 Shuvo. All rights reserved.</div>
 </footer>
 
 <script>
-  // CURSOR
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+// CURSOR
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));});
 
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
-  });
+// SCROLL REVEAL
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.skill-bar[data-w]').forEach(b=>b.style.width=b.dataset.w+'%');}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// Also trigger skill bars on about section
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skill-bar[data-w]').forEach(b=>b.style.width=b.dataset.w+'%');});},{threshold:0.2}).observe(document.getElementById('about'));
 
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+// COUNTERS
+function runCounter(el,target,dur=1800){let s=null;(function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);el.textContent=Math.floor(p*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;})(0);}
+// Fix: use proper rAF
+function animCount(el,target){let start=null;function step(ts){if(!start)start=ts;const p=Math.min((ts-start)/1800,1);el.textContent=Math.floor(p*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;}requestAnimationFrame(step);}
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.counter[data-t]').forEach(c=>animCount(c,+c.dataset.t));}});},{threshold:0.5}).observe(document.querySelector('.stats-row'));
 
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        // trigger skill bars
-        e.target.querySelectorAll('.skill-fill').forEach(bar => {
-          bar.style.width = bar.dataset.width + '%';
-        });
-      }
-    });
-  }, { threshold: 0.12 });
+// FILTER
+document.querySelectorAll('.pf-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});});
 
-  reveals.forEach(r => observer.observe(r));
+// FORM
+function handleForm(e){e.preventDefault();const btn=document.getElementById('cf-btn');btn.textContent='✓ Sent! I\'ll be in touch soon.';btn.style.background='linear-gradient(135deg,#00D4AA,#00a882)';setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';e.target.reset();},4000);}
 
-  // Also observe skill fills directly
-  document.querySelectorAll('.about-text').forEach(el => {
-    const o = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.skill-fill').forEach(bar => {
-            bar.style.width = bar.dataset.width + '%';
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-    o.observe(el);
-  });
-
-  // COUNTER ANIMATION
-  function animateCounter(el, target, duration = 2000) {
-    let start = 0;
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      el.textContent = Math.floor(progress * target);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    };
-    requestAnimationFrame(step);
-  }
-
-  const counterObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.counter').forEach(counter => {
-          animateCounter(counter, parseInt(counter.dataset.target));
-        });
-        counterObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('.stats-bar').forEach(el => counterObs.observe(el));
-
-  // PORTFOLIO FILTER
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  // FORM SUBMIT
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = '#00b894';
-    setTimeout(() => {
-      btn.textContent = 'Send Message →';
-      btn.style.background = 'var(--accent1)';
-      e.target.reset();
-    }, 3000);
-  }
-
-  // NAV active state
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.background = window.scrollY > 50
-      ? 'rgba(8,8,8,0.95)'
-      : 'rgba(8,8,8,0.7)';
-  });
+// NAV
+window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=window.scrollY>60?'rgba(6,6,10,0.97)':'rgba(6,6,10,0.8)';});
 </script>
 </body>
 </html>
