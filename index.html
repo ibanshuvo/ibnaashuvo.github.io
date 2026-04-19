@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ibna Shuvo — Creative Designer & Email Marketing Manager</title>
+<title>Shuvo — Creative Designer & Email Marketing Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
@@ -83,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;
 #hero{
   min-height:100vh;
   display:flex;align-items:center;
-  padding:8rem 4rem 4rem;
+  padding:8rem 5rem 4rem 4rem;
   position:relative;overflow:hidden;
 }
 
@@ -105,7 +105,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;
 .h-lines::before{content:'';position:absolute;top:-50%;right:-10%;width:2px;height:200%;background:linear-gradient(to bottom,transparent,rgba(255,45,120,.15),rgba(0,245,255,.1),transparent);transform:rotate(-15deg);}
 .h-lines::after{content:'';position:absolute;top:-50%;right:15%;width:1px;height:200%;background:linear-gradient(to bottom,transparent,rgba(255,184,0,.08),transparent);transform:rotate(-15deg);}
 
-.hero-inner{position:relative;z-index:10;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;width:100%;}
+.hero-inner{position:relative;z-index:10;display:grid;grid-template-columns:1fr minmax(0,400px);gap:3rem;align-items:center;width:100%;max-width:100%;}
 
 /* floating pill */
 .h-pill{
@@ -192,7 +192,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;
 .btn-glass:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:var(--shadow-cyan);}
 
 /* hero right — 3D card stack */
-.hero-cards{position:relative;height:420px;opacity:0;animation:fadeRight .9s .5s forwards;}
+.hero-cards{position:relative;height:430px;opacity:0;animation:fadeRight .9s .5s forwards;overflow:visible;min-width:0;}
 @keyframes fadeRight{from{opacity:0;transform:translateX(60px) rotateY(15deg);}to{opacity:1;transform:translateX(0) rotateY(0);}}
 
 .hc{
@@ -279,7 +279,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;
 .sl{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:.5rem;}
 
 /* ── SECTION SHARED ── */
-section{padding:8rem 4rem;position:relative;z-index:10;}
+section{padding:8rem 5rem 8rem 4rem;position:relative;z-index:10;}
 .sec-eyebrow{
   display:inline-flex;align-items:center;gap:.8rem;
   font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;
@@ -704,16 +704,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .f-copy{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);}
 
 /* ── SIDEBAR ── */
-.sidebar{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:.8rem;z-index:100;}
-.sidebar::before,.sidebar::after{content:'';width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(255,45,120,.3));}
+.sidebar{position:fixed;right:1rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;z-index:100;}
+.sidebar::before,.sidebar::after{content:'';width:1px;height:35px;background:linear-gradient(to bottom,transparent,rgba(255,45,120,.3));}
 .side-a{
-  width:38px;height:38px;
-  background:var(--glass2);border:1px solid var(--border2);border-radius:10px;
+  width:32px;height:32px;
+  background:rgba(3,3,10,0.9);
+  border:1px solid var(--border2);border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  text-decoration:none;color:var(--muted2);font-size:.85rem;
+  text-decoration:none;color:var(--muted2);font-size:.72rem;
   backdrop-filter:blur(20px);
   transition:all .35s;
-  box-shadow:var(--card-shadow);
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
 }
 .side-a:hover{border-color:var(--neon);color:var(--neon);box-shadow:var(--shadow-neon);transform:translateX(-3px);}
 
